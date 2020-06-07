@@ -8,8 +8,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node build/bundle.js",
-    "build:prod": "webpack -p --config webpack.client.prod.js --mode production",
-    "heroku-postbuild": "npm install && npm run build:prod",
+    "heroku-postbuild": "npm install && npm-run-all --parallel prod:*",
+    "prod:server": "webpack -p --config webpack.server.prod.js --mode production",
+    "prod:client": "webpack -p --config webpack.client.prod.js --mode production",
+    "prod:init": "rm -rf build && rm -rf public",
     "webpack-prod": "webpack -p --progress --config webpack.client.prod.js --mode production",
     "dev": "npm run build-server && npm-run-all --parallel dev:*",
     "build-server": "webpack --config webpack.server.js",
