@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node build/bundle.js",
     "heroku-postbuild": "npm install && npm-run-all --parallel prod:*",
-    "prod:server": "webpack  --config webpack.server.js",
+    "prod:server": "webpack -p --config webpack.server.js",
     "prod:client": "webpack -p --config webpack.client.prod.js",
     "prod:initSecond": "rm -rf public",
     "prod:init": "rm -rf build",
